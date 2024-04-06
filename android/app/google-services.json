@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "994464810811",
+    "project_id": "task-manager11",
+    "storage_bucket": "task-manager11.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:994464810811:android:1117077afb81f6e6cbd91e",
+        "android_client_info": {
+          "package_name": "com.eryklorenc.task_manager"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4O87HiiN_vglDR_iLq3PfRpo2ZJTFcBY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
