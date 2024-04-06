@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:task_manager/app/core/theme/app_colors.dart';
+import 'package:task_manager/app/core/theme/app_text_theme_extension.dart';
+import 'package:task_manager/start_page.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -12,14 +14,11 @@ class MyApp extends StatelessWidget {
           seedColor: Theme.of(context).colorScheme.buttonTextColor,
         ),
         useMaterial3: true,
+        extensions: [
+          AppTextThemeExtension.initialize(),
+        ],
       ),
-      home: const Scaffold(
-        body: Center(
-          child: Text(
-            'start',
-          ),
-        ),
-      ),
+      home: const StartPage(),
     );
   }
 }
