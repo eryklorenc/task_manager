@@ -47,11 +47,91 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
-  /// `Start`
-  String get start {
+  /// `Add a task`
+  String get add_task {
     return Intl.message(
-      'Start',
-      name: 'start',
+      'Add a task',
+      name: 'add_task',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Planned`
+  String get planned {
+    return Intl.message(
+      'Planned',
+      name: 'planned',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `In progress`
+  String get in_progress {
+    return Intl.message(
+      'In progress',
+      name: 'in_progress',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Done`
+  String get done {
+    return Intl.message(
+      'Done',
+      name: 'done',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Welcome back!`
+  String get welcome {
+    return Intl.message(
+      'Welcome back!',
+      name: 'welcome',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Ready to plan your day?`
+  String get ready {
+    return Intl.message(
+      'Ready to plan your day?',
+      name: 'ready',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Options`
+  String get options {
+    return Intl.message(
+      'Options',
+      name: 'options',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your personal assistant for task management.`
+  String get assistant {
+    return Intl.message(
+      'Your personal assistant for task management.',
+      name: 'assistant',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Plan, act, achieve goals!`
+  String get action {
+    return Intl.message(
+      'Plan, act, achieve goals!',
+      name: 'action',
       desc: '',
       args: [],
     );

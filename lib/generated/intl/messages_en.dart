@@ -21,6 +21,14 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
-    "start" : MessageLookupByLibrary.simpleMessage("Start")
+    "action" : MessageLookupByLibrary.simpleMessage("Plan, act, achieve goals!"),
+    "add_task" : MessageLookupByLibrary.simpleMessage("Add a task"),
+    "assistant" : MessageLookupByLibrary.simpleMessage("Your personal assistant for task management."),
+    "done" : MessageLookupByLibrary.simpleMessage("Done"),
+    "in_progress" : MessageLookupByLibrary.simpleMessage("In progress"),
+    "options" : MessageLookupByLibrary.simpleMessage("Options"),
+    "planned" : MessageLookupByLibrary.simpleMessage("Planned"),
+    "ready" : MessageLookupByLibrary.simpleMessage("Ready to plan your day?"),
+    "welcome" : MessageLookupByLibrary.simpleMessage("Welcome back!")
   };
 }

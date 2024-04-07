@@ -1,4 +1,12 @@
 {
     "@@locale": "en",
-    "start": "Start"
+    "add_task": "Add a task",
+    "planned": "Planned",
+    "in_progress": "In progress",
+    "done": "Done",
+    "welcome": "Welcome back!",
+    "ready": "Ready to plan your day?",
+    "options": "Options",
+    "assistant": "Your personal assistant for task management.",
+    "action": "Plan, act, achieve goals!"
 }
