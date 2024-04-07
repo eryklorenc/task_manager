@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:task_manager/app/core/theme/app_text_theme_extension.dart';
+import 'package:task_manager/generated/l10n.dart';
 
 class StartPage extends StatelessWidget {
   const StartPage({
@@ -11,7 +12,7 @@ class StartPage extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Text(
-          'start1',
+          S.of(context).start,
           style: Theme.of(context).xTextTheme.display0,
         ),
       ),
