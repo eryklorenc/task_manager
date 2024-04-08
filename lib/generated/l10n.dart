@@ -136,6 +136,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Create task`
+  String get create {
+    return Intl.message(
+      'Create task',
+      name: 'create',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Add a new task by pressing the 'Create task' button. Once pressed, you will be taken to a screen where you can enter details of the new task, such as title, description, date, etc. Once saved, the task will be added to the task list.`
+  String get description {
+    return Intl.message(
+      'Add a new task by pressing the \'Create task\' button. Once pressed, you will be taken to a screen where you can enter details of the new task, such as title, description, date, etc. Once saved, the task will be added to the task list.',
+      name: 'description',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

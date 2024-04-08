@@ -13,6 +13,7 @@ class AppTextThemeExtension extends ThemeExtension<AppTextThemeExtension> {
     required this.body2,
     required this.body3,
     required this.body4,
+    required this.body5,
   });
 
   final TextStyle display0;
@@ -26,6 +27,8 @@ class AppTextThemeExtension extends ThemeExtension<AppTextThemeExtension> {
   final TextStyle body3;
 
   final TextStyle body4;
+
+  final TextStyle body5;
 
   factory AppTextThemeExtension.initialize() => AppTextThemeExtension(
         display0: const TextStyle(
@@ -70,6 +73,12 @@ class AppTextThemeExtension extends ThemeExtension<AppTextThemeExtension> {
           fontWeight: FontWeight.w500,
           height: 1.0,
         ),
+        body5: const TextStyle(
+            color: Color(0xFF5E6366),
+            fontSize: 12,
+            fontStyle: FontStyle.normal,
+            fontWeight: FontWeight.w400,
+            height: 1),
       );
 
   @override
@@ -80,6 +89,7 @@ class AppTextThemeExtension extends ThemeExtension<AppTextThemeExtension> {
     TextStyle? body2,
     TextStyle? body3,
     TextStyle? body4,
+    TextStyle? body5,
   }) {
     return AppTextThemeExtension(
       display0: display0 ?? this.display0,
@@ -88,6 +98,7 @@ class AppTextThemeExtension extends ThemeExtension<AppTextThemeExtension> {
       body2: body2 ?? this.body2,
       body3: body3 ?? this.body3,
       body4: body4 ?? this.body4,
+      body5: body5 ?? this.body5,
     );
   }
 

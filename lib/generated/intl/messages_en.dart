@@ -24,6 +24,8 @@ class MessageLookup extends MessageLookupByLibrary {
     "action" : MessageLookupByLibrary.simpleMessage("Plan, act, achieve goals!"),
     "add_task" : MessageLookupByLibrary.simpleMessage("Add a task"),
     "assistant" : MessageLookupByLibrary.simpleMessage("Your personal assistant for task management."),
+    "create" : MessageLookupByLibrary.simpleMessage("Create task"),
+    "description" : MessageLookupByLibrary.simpleMessage("Add a new task by pressing the \'Create task\' button. Once pressed, you will be taken to a screen where you can enter details of the new task, such as title, description, date, etc. Once saved, the task will be added to the task list."),
     "done" : MessageLookupByLibrary.simpleMessage("Done"),
     "in_progress" : MessageLookupByLibrary.simpleMessage("In progress"),
     "options" : MessageLookupByLibrary.simpleMessage("Options"),

@@ -8,5 +8,7 @@
     "ready": "Ready to plan your day?",
     "options": "Options",
     "assistant": "Your personal assistant for task management.",
-    "action": "Plan, act, achieve goals!"
+    "action": "Plan, act, achieve goals!",
+    "create": "Create task",
+    "description": "Add a new task by pressing the 'Create task' button. Once pressed, you will be taken to a screen where you can enter details of the new task, such as title, description, date, etc. Once saved, the task will be added to the task list."
 }
