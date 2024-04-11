@@ -28,17 +28,17 @@ class InProgressPage extends StatelessWidget {
             if (state.errorMessage.isNotEmpty) {
               return Center(child: Text(S.of(context).error));
             }
-            final documents = state.documents;
-            if (documents!.isEmpty) {
+            final item = state.items;
+            if (item.isEmpty) {
               return Center(child: Text(S.of(context).no_tasks));
             }
             return ListView.builder(
-              itemCount: documents.length,
+              itemCount: item.length,
               itemBuilder: (context, index) {
-                final taskData = documents[index].data() as Map<String, dynamic>;
-                final String? name = taskData['Name'];
-                final String? description = taskData['Description'];
-                if ((name == null || name.isEmpty) && (description == null || description.isEmpty)) {
+                final taskData = item[index];
+                final String name = taskData.name;
+                final String description = taskData.description;
+                if ((name.isEmpty) && (description.isEmpty)) {
                   return Container();
                 }
                 return ContainerSS(
@@ -52,13 +52,13 @@ class InProgressPage extends StatelessWidget {
                     ),
                   ),
                   child: ListTile(
-                    title: name != null && name.isNotEmpty
+                    title: name.isNotEmpty
                         ? Text(
                             name,
                             style: Theme.of(context).xTextTheme.body2,
                           )
                         : null,
-                    subtitle: description != null && description.isNotEmpty
+                    subtitle: description.isNotEmpty
                         ? Text(
                             description,
                             style: Theme.of(context).xTextTheme.body2,
@@ -70,7 +70,7 @@ class InProgressPage extends StatelessWidget {
                         color: AppColors.main,
                       ),
                       onPressed: () {
-                        context.read<InProgressCubit>().deleteDocument(documents[index].id);
+                        context.read<InProgressCubit>().deleteDocument(item[index].id);
                       },
                     ),
                   ),

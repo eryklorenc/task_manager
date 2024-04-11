@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$DoneState {
+  List<TaskModel> get items => throw _privateConstructorUsedError;
   String get errorMessage => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   List<DocumentSnapshot<Object?>>? get documents =>
@@ -32,7 +33,8 @@ abstract class $DoneStateCopyWith<$Res> {
       _$DoneStateCopyWithImpl<$Res, DoneState>;
   @useResult
   $Res call(
-      {String errorMessage,
+      {List<TaskModel> items,
+      String errorMessage,
       bool isLoading,
       List<DocumentSnapshot<Object?>>? documents});
 }
@@ -50,11 +52,16 @@ class _$DoneStateCopyWithImpl<$Res, $Val extends DoneState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? items = null,
     Object? errorMessage = null,
     Object? isLoading = null,
     Object? documents = freezed,
   }) {
     return _then(_value.copyWith(
+      items: null == items
+          ? _value.items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<TaskModel>,
       errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -80,7 +87,8 @@ abstract class _$$DoneStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String errorMessage,
+      {List<TaskModel> items,
+      String errorMessage,
       bool isLoading,
       List<DocumentSnapshot<Object?>>? documents});
 }
@@ -96,11 +104,16 @@ class __$$DoneStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? items = null,
     Object? errorMessage = null,
     Object? isLoading = null,
     Object? documents = freezed,
   }) {
     return _then(_$DoneStateImpl(
+      items: null == items
+          ? _value._items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<TaskModel>,
       errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -121,10 +134,21 @@ class __$$DoneStateImplCopyWithImpl<$Res>
 
 class _$DoneStateImpl implements _DoneState {
   const _$DoneStateImpl(
-      {this.errorMessage = '',
+      {final List<TaskModel> items = const [],
+      this.errorMessage = '',
       this.isLoading = false,
       final List<DocumentSnapshot<Object?>>? documents})
-      : _documents = documents;
+      : _items = items,
+        _documents = documents;
+
+  final List<TaskModel> _items;
+  @override
+  @JsonKey()
+  List<TaskModel> get items {
+    if (_items is EqualUnmodifiableListView) return _items;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_items);
+  }
 
   @override
   @JsonKey()
@@ -144,7 +168,7 @@ class _$DoneStateImpl implements _DoneState {
 
   @override
   String toString() {
-    return 'DoneState(errorMessage: $errorMessage, isLoading: $isLoading, documents: $documents)';
+    return 'DoneState(items: $items, errorMessage: $errorMessage, isLoading: $isLoading, documents: $documents)';
   }
 
   @override
@@ -152,6 +176,7 @@ class _$DoneStateImpl implements _DoneState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$DoneStateImpl &&
+            const DeepCollectionEquality().equals(other._items, _items) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
             (identical(other.isLoading, isLoading) ||
@@ -161,7 +186,11 @@ class _$DoneStateImpl implements _DoneState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, errorMessage, isLoading,
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_items),
+      errorMessage,
+      isLoading,
       const DeepCollectionEquality().hash(_documents));
 
   @JsonKey(ignore: true)
@@ -173,10 +202,13 @@ class _$DoneStateImpl implements _DoneState {
 
 abstract class _DoneState implements DoneState {
   const factory _DoneState(
-      {final String errorMessage,
+      {final List<TaskModel> items,
+      final String errorMessage,
       final bool isLoading,
       final List<DocumentSnapshot<Object?>>? documents}) = _$DoneStateImpl;
 
+  @override
+  List<TaskModel> get items;
   @override
   String get errorMessage;
   @override

@@ -40,23 +40,23 @@ class _AddTaskPageState extends State<AddTaskPage> {
                     return const Center(child: CircularProgressIndicator());
                   }
 
-                  final documents = state.documents;
+                  final item = state.items;
 
                   return ListView(
                     children: [
-                      for (final document in documents!) ...[
+                      for (final item in item) ...[
                         Dismissible(
-                            key: ValueKey(document.id),
+                            key: ValueKey(item.id),
                             onDismissed: (_) {
-                              context.read<AddTaskCubit>().deleteDocument(document.id);
+                              context.read<AddTaskCubit>().deleteDocument(item.id);
                             },
                             child: _buildTask(
                               context,
-                              document['Name'],
-                              document['Description'],
-                              document['Owner'],
-                              document['DueDate'].toDate(),
-                              document['Priority'],
+                              item.name,
+                              item.description,
+                              item.owner,
+                              item.dueDate,
+                              item.priority,
                             )),
                       ],
                     ],

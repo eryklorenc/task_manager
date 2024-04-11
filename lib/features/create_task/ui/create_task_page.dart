@@ -151,7 +151,7 @@ class CreateTaskPageState extends State<CreateTaskPage> {
         );
       }).toList(),
       onChanged: (String? value) {
-        context.read<CreateTaskCubit>().updatePriority(value ?? 'Planned');
+        context.read<CreateTaskCubit>().updatePriority(value ?? S.of(context).planned);
       },
     );
   }

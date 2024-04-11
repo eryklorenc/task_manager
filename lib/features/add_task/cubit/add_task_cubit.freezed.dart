@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AddTaskState {
+  List<TaskModel> get items => throw _privateConstructorUsedError;
   String get errorMessage => throw _privateConstructorUsedError;
   bool get isLoading => throw _privateConstructorUsedError;
   List<DocumentSnapshot<Object?>>? get documents =>
@@ -33,7 +34,8 @@ abstract class $AddTaskStateCopyWith<$Res> {
       _$AddTaskStateCopyWithImpl<$Res, AddTaskState>;
   @useResult
   $Res call(
-      {String errorMessage,
+      {List<TaskModel> items,
+      String errorMessage,
       bool isLoading,
       List<DocumentSnapshot<Object?>>? documents});
 }
@@ -51,11 +53,16 @@ class _$AddTaskStateCopyWithImpl<$Res, $Val extends AddTaskState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? items = null,
     Object? errorMessage = null,
     Object? isLoading = null,
     Object? documents = freezed,
   }) {
     return _then(_value.copyWith(
+      items: null == items
+          ? _value.items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<TaskModel>,
       errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -81,7 +88,8 @@ abstract class _$$AddTaskStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String errorMessage,
+      {List<TaskModel> items,
+      String errorMessage,
       bool isLoading,
       List<DocumentSnapshot<Object?>>? documents});
 }
@@ -97,11 +105,16 @@ class __$$AddTaskStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? items = null,
     Object? errorMessage = null,
     Object? isLoading = null,
     Object? documents = freezed,
   }) {
     return _then(_$AddTaskStateImpl(
+      items: null == items
+          ? _value._items
+          : items // ignore: cast_nullable_to_non_nullable
+              as List<TaskModel>,
       errorMessage: null == errorMessage
           ? _value.errorMessage
           : errorMessage // ignore: cast_nullable_to_non_nullable
@@ -122,10 +135,21 @@ class __$$AddTaskStateImplCopyWithImpl<$Res>
 
 class _$AddTaskStateImpl implements _AddTaskState {
   const _$AddTaskStateImpl(
-      {this.errorMessage = '',
+      {final List<TaskModel> items = const [],
+      this.errorMessage = '',
       this.isLoading = false,
       final List<DocumentSnapshot<Object?>>? documents})
-      : _documents = documents;
+      : _items = items,
+        _documents = documents;
+
+  final List<TaskModel> _items;
+  @override
+  @JsonKey()
+  List<TaskModel> get items {
+    if (_items is EqualUnmodifiableListView) return _items;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_items);
+  }
 
   @override
   @JsonKey()
@@ -145,7 +169,7 @@ class _$AddTaskStateImpl implements _AddTaskState {
 
   @override
   String toString() {
-    return 'AddTaskState(errorMessage: $errorMessage, isLoading: $isLoading, documents: $documents)';
+    return 'AddTaskState(items: $items, errorMessage: $errorMessage, isLoading: $isLoading, documents: $documents)';
   }
 
   @override
@@ -153,6 +177,7 @@ class _$AddTaskStateImpl implements _AddTaskState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$AddTaskStateImpl &&
+            const DeepCollectionEquality().equals(other._items, _items) &&
             (identical(other.errorMessage, errorMessage) ||
                 other.errorMessage == errorMessage) &&
             (identical(other.isLoading, isLoading) ||
@@ -162,7 +187,11 @@ class _$AddTaskStateImpl implements _AddTaskState {
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, errorMessage, isLoading,
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_items),
+      errorMessage,
+      isLoading,
       const DeepCollectionEquality().hash(_documents));
 
   @JsonKey(ignore: true)
@@ -174,10 +203,13 @@ class _$AddTaskStateImpl implements _AddTaskState {
 
 abstract class _AddTaskState implements AddTaskState {
   const factory _AddTaskState(
-      {final String errorMessage,
+      {final List<TaskModel> items,
+      final String errorMessage,
       final bool isLoading,
       final List<DocumentSnapshot<Object?>>? documents}) = _$AddTaskStateImpl;
 
+  @override
+  List<TaskModel> get items;
   @override
   String get errorMessage;
   @override
