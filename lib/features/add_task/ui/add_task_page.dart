@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:intl/intl.dart';
 import 'package:task_manager/app/core/theme/app_colors.dart';
 import 'package:task_manager/app/core/theme/app_text_theme_extension.dart';
 import 'package:task_manager/app/core/utils/screen_size.dart';
 import 'package:task_manager/features/add_task/cubit/add_task_cubit.dart';
+import 'package:task_manager/features/add_task/widgets/task_widget.dart';
 import 'package:task_manager/features/create_task/ui/create_task_page.dart';
 import 'package:task_manager/generated/l10n.dart';
 
@@ -50,14 +50,8 @@ class _AddTaskPageState extends State<AddTaskPage> {
                             onDismissed: (_) {
                               context.read<AddTaskCubit>().deleteDocument(item.id);
                             },
-                            child: _buildTask(
-                              context,
-                              item.name,
-                              item.description,
-                              item.owner,
-                              item.dueDate,
-                              item.priority,
-                            )),
+                            child: taskWidget(context, item.name, item.description, item.owner, item.dueDate,
+                                item.priority, item.id)),
                       ],
                     ],
                   );
@@ -121,52 +115,6 @@ Widget _buildOptionsLabel(BuildContext context) {
         S.of(context).all_tasks,
         style: Theme.of(context).xTextTheme.body1,
       ),
-    ),
-  );
-}
-
-Widget _buildTask(
-    BuildContext context, String? name, String? description, String? owner, DateTime? dueDate, String? priority) {
-  return Container(
-    margin: const EdgeInsetsSS.symmetric(horizontal: 5, vertical: 0.3),
-    decoration: BoxDecoration(
-      color: AppColors.white,
-      borderRadius: BorderRadius.circular(10.0),
-      border: Border.all(
-        color: AppColors.main,
-        width: 1,
-      ),
-    ),
-    padding: const EdgeInsetsSS.all(1),
-    child: Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        if (name != null && name.isNotEmpty)
-          Text(
-            S.of(context).name(name),
-            style: Theme.of(context).xTextTheme.body2,
-          ),
-        if (description != null && description.isNotEmpty)
-          Text(
-            S.of(context).description_name(description),
-            style: Theme.of(context).xTextTheme.body2,
-          ),
-        if (owner != null && owner.isNotEmpty)
-          Text(
-            S.of(context).owner(owner),
-            style: Theme.of(context).xTextTheme.body2,
-          ),
-        if (dueDate != null)
-          Text(
-            S.of(context).date(DateFormat.yMd().format(dueDate.toLocal())),
-            style: Theme.of(context).xTextTheme.body2,
-          ),
-        if (priority != null && priority.isNotEmpty)
-          Text(
-            S.of(context).priority(priority),
-            style: Theme.of(context).xTextTheme.body2,
-          ),
-      ],
     ),
   );
 }

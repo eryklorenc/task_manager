@@ -32,5 +32,8 @@
     "task_done": "Number of tasks performed: {tasksDone}",
     "task_week": "Number of tasks completed this week: {tasksDoneThisWeek}",
     "planned_task_stat": "Number of scheduled tasks: {plannedTasks}",
-    "percentage_task": "Percentage implementation of planned tasks: {completedPercentage}%"
+    "percentage_task": "Percentage implementation of planned tasks: {completedPercentage}%",
+    "edit_task": "Edit task",
+    "save": "Save",
+    "edit": "Edit"
 }

@@ -376,6 +376,36 @@ class S {
       args: [completedPercentage],
     );
   }
+
+  /// `Edit task`
+  String get edit_task {
+    return Intl.message(
+      'Edit task',
+      name: 'edit_task',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save`
+  String get save {
+    return Intl.message(
+      'Save',
+      name: 'save',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit`
+  String get edit {
+    return Intl.message(
+      'Edit',
+      name: 'edit',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

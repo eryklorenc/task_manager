@@ -22,12 +22,6 @@ mixin _$CreateTaskState {
       throw _privateConstructorUsedError;
   DateTime? get selectedDate => throw _privateConstructorUsedError;
   String get selectedPriority => throw _privateConstructorUsedError;
-  TextEditingController? get taskNameController =>
-      throw _privateConstructorUsedError;
-  TextEditingController? get taskDescriptionController =>
-      throw _privateConstructorUsedError;
-  TextEditingController? get taskOwnerController =>
-      throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $CreateTaskStateCopyWith<CreateTaskState> get copyWith =>
@@ -45,10 +39,7 @@ abstract class $CreateTaskStateCopyWith<$Res> {
       bool isLoading,
       List<DocumentSnapshot<Object?>>? documents,
       DateTime? selectedDate,
-      String selectedPriority,
-      TextEditingController? taskNameController,
-      TextEditingController? taskDescriptionController,
-      TextEditingController? taskOwnerController});
+      String selectedPriority});
 }
 
 /// @nodoc
@@ -69,9 +60,6 @@ class _$CreateTaskStateCopyWithImpl<$Res, $Val extends CreateTaskState>
     Object? documents = freezed,
     Object? selectedDate = freezed,
     Object? selectedPriority = null,
-    Object? taskNameController = freezed,
-    Object? taskDescriptionController = freezed,
-    Object? taskOwnerController = freezed,
   }) {
     return _then(_value.copyWith(
       errorMessage: null == errorMessage
@@ -94,18 +82,6 @@ class _$CreateTaskStateCopyWithImpl<$Res, $Val extends CreateTaskState>
           ? _value.selectedPriority
           : selectedPriority // ignore: cast_nullable_to_non_nullable
               as String,
-      taskNameController: freezed == taskNameController
-          ? _value.taskNameController
-          : taskNameController // ignore: cast_nullable_to_non_nullable
-              as TextEditingController?,
-      taskDescriptionController: freezed == taskDescriptionController
-          ? _value.taskDescriptionController
-          : taskDescriptionController // ignore: cast_nullable_to_non_nullable
-              as TextEditingController?,
-      taskOwnerController: freezed == taskOwnerController
-          ? _value.taskOwnerController
-          : taskOwnerController // ignore: cast_nullable_to_non_nullable
-              as TextEditingController?,
     ) as $Val);
   }
 }
@@ -123,10 +99,7 @@ abstract class _$$CreateTaskStateImplCopyWith<$Res>
       bool isLoading,
       List<DocumentSnapshot<Object?>>? documents,
       DateTime? selectedDate,
-      String selectedPriority,
-      TextEditingController? taskNameController,
-      TextEditingController? taskDescriptionController,
-      TextEditingController? taskOwnerController});
+      String selectedPriority});
 }
 
 /// @nodoc
@@ -145,9 +118,6 @@ class __$$CreateTaskStateImplCopyWithImpl<$Res>
     Object? documents = freezed,
     Object? selectedDate = freezed,
     Object? selectedPriority = null,
-    Object? taskNameController = freezed,
-    Object? taskDescriptionController = freezed,
-    Object? taskOwnerController = freezed,
   }) {
     return _then(_$CreateTaskStateImpl(
       errorMessage: null == errorMessage
@@ -170,18 +140,6 @@ class __$$CreateTaskStateImplCopyWithImpl<$Res>
           ? _value.selectedPriority
           : selectedPriority // ignore: cast_nullable_to_non_nullable
               as String,
-      taskNameController: freezed == taskNameController
-          ? _value.taskNameController
-          : taskNameController // ignore: cast_nullable_to_non_nullable
-              as TextEditingController?,
-      taskDescriptionController: freezed == taskDescriptionController
-          ? _value.taskDescriptionController
-          : taskDescriptionController // ignore: cast_nullable_to_non_nullable
-              as TextEditingController?,
-      taskOwnerController: freezed == taskOwnerController
-          ? _value.taskOwnerController
-          : taskOwnerController // ignore: cast_nullable_to_non_nullable
-              as TextEditingController?,
     ));
   }
 }
@@ -194,10 +152,7 @@ class _$CreateTaskStateImpl implements _CreateTaskState {
       this.isLoading = false,
       final List<DocumentSnapshot<Object?>>? documents,
       this.selectedDate,
-      this.selectedPriority = 'Planned',
-      this.taskNameController,
-      this.taskDescriptionController,
-      this.taskOwnerController})
+      this.selectedPriority = 'Planned'})
       : _documents = documents;
 
   @override
@@ -221,16 +176,10 @@ class _$CreateTaskStateImpl implements _CreateTaskState {
   @override
   @JsonKey()
   final String selectedPriority;
-  @override
-  final TextEditingController? taskNameController;
-  @override
-  final TextEditingController? taskDescriptionController;
-  @override
-  final TextEditingController? taskOwnerController;
 
   @override
   String toString() {
-    return 'CreateTaskState(errorMessage: $errorMessage, isLoading: $isLoading, documents: $documents, selectedDate: $selectedDate, selectedPriority: $selectedPriority, taskNameController: $taskNameController, taskDescriptionController: $taskDescriptionController, taskOwnerController: $taskOwnerController)';
+    return 'CreateTaskState(errorMessage: $errorMessage, isLoading: $isLoading, documents: $documents, selectedDate: $selectedDate, selectedPriority: $selectedPriority)';
   }
 
   @override
@@ -247,14 +196,7 @@ class _$CreateTaskStateImpl implements _CreateTaskState {
             (identical(other.selectedDate, selectedDate) ||
                 other.selectedDate == selectedDate) &&
             (identical(other.selectedPriority, selectedPriority) ||
-                other.selectedPriority == selectedPriority) &&
-            (identical(other.taskNameController, taskNameController) ||
-                other.taskNameController == taskNameController) &&
-            (identical(other.taskDescriptionController,
-                    taskDescriptionController) ||
-                other.taskDescriptionController == taskDescriptionController) &&
-            (identical(other.taskOwnerController, taskOwnerController) ||
-                other.taskOwnerController == taskOwnerController));
+                other.selectedPriority == selectedPriority));
   }
 
   @override
@@ -264,10 +206,7 @@ class _$CreateTaskStateImpl implements _CreateTaskState {
       isLoading,
       const DeepCollectionEquality().hash(_documents),
       selectedDate,
-      selectedPriority,
-      taskNameController,
-      taskDescriptionController,
-      taskOwnerController);
+      selectedPriority);
 
   @JsonKey(ignore: true)
   @override
@@ -279,15 +218,11 @@ class _$CreateTaskStateImpl implements _CreateTaskState {
 
 abstract class _CreateTaskState implements CreateTaskState {
   const factory _CreateTaskState(
-          {final String errorMessage,
-          final bool isLoading,
-          final List<DocumentSnapshot<Object?>>? documents,
-          final DateTime? selectedDate,
-          final String selectedPriority,
-          final TextEditingController? taskNameController,
-          final TextEditingController? taskDescriptionController,
-          final TextEditingController? taskOwnerController}) =
-      _$CreateTaskStateImpl;
+      {final String errorMessage,
+      final bool isLoading,
+      final List<DocumentSnapshot<Object?>>? documents,
+      final DateTime? selectedDate,
+      final String selectedPriority}) = _$CreateTaskStateImpl;
 
   @override
   String get errorMessage;
@@ -299,12 +234,6 @@ abstract class _CreateTaskState implements CreateTaskState {
   DateTime? get selectedDate;
   @override
   String get selectedPriority;
-  @override
-  TextEditingController? get taskNameController;
-  @override
-  TextEditingController? get taskDescriptionController;
-  @override
-  TextEditingController? get taskOwnerController;
   @override
   @JsonKey(ignore: true)
   _$$CreateTaskStateImplCopyWith<_$CreateTaskStateImpl> get copyWith =>

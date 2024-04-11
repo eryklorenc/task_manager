@@ -8,8 +8,5 @@ class CreateTaskState with _$CreateTaskState {
     List<DocumentSnapshot>? documents,
     DateTime? selectedDate,
     @Default('Planned') String selectedPriority,
-    TextEditingController? taskNameController,
-    TextEditingController? taskDescriptionController,
-    TextEditingController? taskOwnerController,
   }) = _CreateTaskState;
 }
