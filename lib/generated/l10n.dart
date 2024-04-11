@@ -316,6 +316,16 @@ class S {
       args: [selectedDate],
     );
   }
+
+  /// `Task name and due date are required`
+  String get snackbar {
+    return Intl.message(
+      'Task name and due date are required',
+      name: 'snackbar',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

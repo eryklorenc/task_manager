@@ -26,5 +26,6 @@
     "owner": "Owner: {owner}",
     "date": "Due Date: {dueDate}",
     "priority": "Priority: {priority}",
-    "selected_date": "Selected Due Date: {selectedDate}"
+    "selected_date": "Selected Due Date: {selectedDate}",
+    "snackbar": "Task name and due date are required"
 }

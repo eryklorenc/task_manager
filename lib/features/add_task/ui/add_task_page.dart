@@ -5,7 +5,7 @@ import 'package:task_manager/app/core/theme/app_colors.dart';
 import 'package:task_manager/app/core/theme/app_text_theme_extension.dart';
 import 'package:task_manager/app/core/utils/screen_size.dart';
 import 'package:task_manager/features/add_task/cubit/add_task_cubit.dart';
-import 'package:task_manager/features/create_task/create_task_page.dart';
+import 'package:task_manager/features/create_task/ui/create_task_page.dart';
 import 'package:task_manager/generated/l10n.dart';
 
 class AddTaskPage extends StatefulWidget {

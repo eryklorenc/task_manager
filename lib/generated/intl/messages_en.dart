@@ -55,6 +55,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "ready" : MessageLookupByLibrary.simpleMessage("Ready to plan your day?"),
     "select_due_date" : MessageLookupByLibrary.simpleMessage("Select Due Date"),
     "selected_date" : m5,
+    "snackbar" : MessageLookupByLibrary.simpleMessage("Task name and due date are required"),
     "task_description" : MessageLookupByLibrary.simpleMessage("Task Description"),
     "task_name" : MessageLookupByLibrary.simpleMessage("Task Name"),
     "task_owner" : MessageLookupByLibrary.simpleMessage("Task Owner"),

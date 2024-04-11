@@ -78,18 +78,24 @@ class CreateTaskPageState extends State<CreateTaskPage> {
                   const SizedBox(height: 12.0),
                   ElevatedButton(
                     onPressed: () {
-                      context
-                          .read<CreateTaskCubit>()
-                          .addTask(
-                            taskName: _taskNameController.text,
-                            taskDescription: _taskDescriptionController.text,
-                            taskOwner: _taskOwnerController.text,
-                            dueDate: state.selectedDate ?? DateTime.now(),
-                            priority: state.selectedPriority,
-                          )
-                          .then((_) {
-                        Navigator.of(context).pop();
-                      });
+                      if (state.selectedDate != null && _taskNameController.text.isNotEmpty) {
+                        context
+                            .read<CreateTaskCubit>()
+                            .addTask(
+                              taskName: _taskNameController.text,
+                              taskDescription: _taskDescriptionController.text,
+                              taskOwner: _taskOwnerController.text,
+                              dueDate: state.selectedDate!,
+                              priority: state.selectedPriority,
+                            )
+                            .then((_) {
+                          Navigator.of(context).pop();
+                        });
+                      } else {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text(S.of(context).snackbar)),
+                        );
+                      }
                     },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppColors.main,
