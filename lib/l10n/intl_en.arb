@@ -27,5 +27,10 @@
     "date": "Due Date: {dueDate}",
     "priority": "Priority: {priority}",
     "selected_date": "Selected Due Date: {selectedDate}",
-    "snackbar": "Task name and due date are required"
+    "snackbar": "Task name and due date are required",
+    "statistics": "Statistics",
+    "task_done": "Number of tasks performed: {tasksDone}",
+    "task_week": "Number of tasks completed this week: {tasksDoneThisWeek}",
+    "planned_task_stat": "Number of scheduled tasks: {plannedTasks}",
+    "percentage_task": "Percentage implementation of planned tasks: {completedPercentage}%"
 }

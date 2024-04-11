@@ -326,6 +326,56 @@ class S {
       args: [],
     );
   }
+
+  /// `Statistics`
+  String get statistics {
+    return Intl.message(
+      'Statistics',
+      name: 'statistics',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Number of tasks performed: {tasksDone}`
+  String task_done(Object tasksDone) {
+    return Intl.message(
+      'Number of tasks performed: $tasksDone',
+      name: 'task_done',
+      desc: '',
+      args: [tasksDone],
+    );
+  }
+
+  /// `Number of tasks completed this week: {tasksDoneThisWeek}`
+  String task_week(Object tasksDoneThisWeek) {
+    return Intl.message(
+      'Number of tasks completed this week: $tasksDoneThisWeek',
+      name: 'task_week',
+      desc: '',
+      args: [tasksDoneThisWeek],
+    );
+  }
+
+  /// `Number of scheduled tasks: {plannedTasks}`
+  String planned_task_stat(Object plannedTasks) {
+    return Intl.message(
+      'Number of scheduled tasks: $plannedTasks',
+      name: 'planned_task_stat',
+      desc: '',
+      args: [plannedTasks],
+    );
+  }
+
+  /// `Percentage implementation of planned tasks: {completedPercentage}%`
+  String percentage_task(Object completedPercentage) {
+    return Intl.message(
+      'Percentage implementation of planned tasks: $completedPercentage%',
+      name: 'percentage_task',
+      desc: '',
+      args: [completedPercentage],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -8,6 +8,7 @@ import 'package:task_manager/features/home/widgets/settings_list.dart';
 import 'package:task_manager/features/home/widgets/top_widget.dart';
 import 'package:task_manager/features/in_progress/ui/in_progress_page.dart';
 import 'package:task_manager/features/planned/ui/planned_page.dart';
+import 'package:task_manager/features/statistics/ui/statistics_page.dart';
 import 'package:task_manager/generated/l10n.dart';
 
 class HomePage extends StatelessWidget {
@@ -83,6 +84,18 @@ Widget buildUserScreen(BuildContext context) {
                           context,
                           MaterialPageRoute(
                             builder: (context) => const DonePage(),
+                          ),
+                        );
+                      },
+                      context: context),
+                  settingsList(
+                      icon: Icons.signal_cellular_alt,
+                      title: S.of(context).statistics,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const StatisticsPage(),
                           ),
                         );
                       },

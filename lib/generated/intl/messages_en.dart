@@ -27,9 +27,17 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m3(owner) => "Owner: ${owner}";
 
-  static m4(priority) => "Priority: ${priority}";
+  static m4(completedPercentage) => "Percentage implementation of planned tasks: ${completedPercentage}%";
 
-  static m5(selectedDate) => "Selected Due Date: ${selectedDate}";
+  static m5(plannedTasks) => "Number of scheduled tasks: ${plannedTasks}";
+
+  static m6(priority) => "Priority: ${priority}";
+
+  static m7(selectedDate) => "Selected Due Date: ${selectedDate}";
+
+  static m8(tasksDone) => "Number of tasks performed: ${tasksDone}";
+
+  static m9(tasksDoneThisWeek) => "Number of tasks completed this week: ${tasksDoneThisWeek}";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
@@ -49,17 +57,22 @@ class MessageLookup extends MessageLookupByLibrary {
     "no_tasks" : MessageLookupByLibrary.simpleMessage("No tasks in progress available"),
     "options" : MessageLookupByLibrary.simpleMessage("Options"),
     "owner" : m3,
+    "percentage_task" : m4,
     "planned" : MessageLookupByLibrary.simpleMessage("Planned"),
+    "planned_task_stat" : m5,
     "planned_tasks" : MessageLookupByLibrary.simpleMessage("Planned Tasks"),
-    "priority" : m4,
+    "priority" : m6,
     "ready" : MessageLookupByLibrary.simpleMessage("Ready to plan your day?"),
     "select_due_date" : MessageLookupByLibrary.simpleMessage("Select Due Date"),
-    "selected_date" : m5,
+    "selected_date" : m7,
     "snackbar" : MessageLookupByLibrary.simpleMessage("Task name and due date are required"),
+    "statistics" : MessageLookupByLibrary.simpleMessage("Statistics"),
     "task_description" : MessageLookupByLibrary.simpleMessage("Task Description"),
+    "task_done" : m8,
     "task_name" : MessageLookupByLibrary.simpleMessage("Task Name"),
     "task_owner" : MessageLookupByLibrary.simpleMessage("Task Owner"),
     "task_priority" : MessageLookupByLibrary.simpleMessage("Task Priority"),
+    "task_week" : m9,
     "welcome" : MessageLookupByLibrary.simpleMessage("Welcome back!")
   };
 }
