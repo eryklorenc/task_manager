@@ -3,8 +3,11 @@ import 'package:task_manager/app/core/theme/app_colors.dart';
 import 'package:task_manager/app/core/theme/app_text_theme_extension.dart';
 import 'package:task_manager/app/core/utils/screen_size.dart';
 import 'package:task_manager/features/add_task/ui/add_task_page.dart';
+import 'package:task_manager/features/done/done_page.dart';
 import 'package:task_manager/features/home/widgets/settings_list.dart';
 import 'package:task_manager/features/home/widgets/top_widget.dart';
+import 'package:task_manager/features/in_progress/in_progress_page.dart';
+import 'package:task_manager/features/planned/planned_page.dart';
 import 'package:task_manager/generated/l10n.dart';
 
 class HomePage extends StatelessWidget {
@@ -48,9 +51,42 @@ Widget buildUserScreen(BuildContext context) {
                         );
                       },
                       context: context),
-                  settingsList(icon: Icons.event_note, title: S.of(context).planned, onTap: () {}, context: context),
-                  settingsList(icon: Icons.work, title: S.of(context).in_progress, onTap: () {}, context: context),
-                  settingsList(icon: Icons.check_circle, title: S.of(context).done, onTap: () {}, context: context),
+                  settingsList(
+                      icon: Icons.event_note,
+                      title: S.of(context).planned,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const PlannedPage(),
+                          ),
+                        );
+                      },
+                      context: context),
+                  settingsList(
+                      icon: Icons.work,
+                      title: S.of(context).in_progress,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const InProgressPage(),
+                          ),
+                        );
+                      },
+                      context: context),
+                  settingsList(
+                      icon: Icons.check_circle,
+                      title: S.of(context).done,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const DonePage(),
+                          ),
+                        );
+                      },
+                      context: context),
                 ],
               ),
             ),

@@ -156,6 +156,166 @@ class S {
       args: [],
     );
   }
+
+  /// `In Progress Tasks`
+  String get in_progress_tasks {
+    return Intl.message(
+      'In Progress Tasks',
+      name: 'in_progress_tasks',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Select Due Date`
+  String get select_due_date {
+    return Intl.message(
+      'Select Due Date',
+      name: 'select_due_date',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Planned Tasks`
+  String get planned_tasks {
+    return Intl.message(
+      'Planned Tasks',
+      name: 'planned_tasks',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All tasks`
+  String get all_tasks {
+    return Intl.message(
+      'All tasks',
+      name: 'all_tasks',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Task Priority`
+  String get task_priority {
+    return Intl.message(
+      'Task Priority',
+      name: 'task_priority',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Task Name`
+  String get task_name {
+    return Intl.message(
+      'Task Name',
+      name: 'task_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Task Description`
+  String get task_description {
+    return Intl.message(
+      'Task Description',
+      name: 'task_description',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Task Owner`
+  String get task_owner {
+    return Intl.message(
+      'Task Owner',
+      name: 'task_owner',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No tasks in progress available`
+  String get no_tasks {
+    return Intl.message(
+      'No tasks in progress available',
+      name: 'no_tasks',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Error`
+  String get error {
+    return Intl.message(
+      'Error',
+      name: 'error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name: {name}`
+  String name(Object name) {
+    return Intl.message(
+      'Name: $name',
+      name: 'name',
+      desc: '',
+      args: [name],
+    );
+  }
+
+  /// `Description: {description}`
+  String description_name(Object description) {
+    return Intl.message(
+      'Description: $description',
+      name: 'description_name',
+      desc: '',
+      args: [description],
+    );
+  }
+
+  /// `Owner: {owner}`
+  String owner(Object owner) {
+    return Intl.message(
+      'Owner: $owner',
+      name: 'owner',
+      desc: '',
+      args: [owner],
+    );
+  }
+
+  /// `Due Date: {dueDate}`
+  String date(Object dueDate) {
+    return Intl.message(
+      'Due Date: $dueDate',
+      name: 'date',
+      desc: '',
+      args: [dueDate],
+    );
+  }
+
+  /// `Priority: {priority}`
+  String priority(Object priority) {
+    return Intl.message(
+      'Priority: $priority',
+      name: 'priority',
+      desc: '',
+      args: [priority],
+    );
+  }
+
+  /// `Selected Due Date: {selectedDate}`
+  String selected_date(Object selectedDate) {
+    return Intl.message(
+      'Selected Due Date: $selectedDate',
+      name: 'selected_date',
+      desc: '',
+      args: [selectedDate],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

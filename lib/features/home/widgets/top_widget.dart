@@ -18,7 +18,7 @@ Widget buildTopWidget(BuildContext context) {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Container(
-            margin: const EdgeInsetsSS.only(left: 1),
+            margin: const EdgeInsetsSS.only(left: 1.5),
             child: Builder(
               builder: (context) {
                 return Column(

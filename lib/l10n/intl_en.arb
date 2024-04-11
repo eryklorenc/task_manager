@@ -10,5 +10,21 @@
     "assistant": "Your personal assistant for task management.",
     "action": "Plan, act, achieve goals!",
     "create": "Create task",
-    "description": "Add a new task by pressing the 'Create task' button. Once pressed, you will be taken to a screen where you can enter details of the new task, such as title, description, date, etc. Once saved, the task will be added to the task list."
+    "description": "Add a new task by pressing the 'Create task' button. Once pressed, you will be taken to a screen where you can enter details of the new task, such as title, description, date, etc. Once saved, the task will be added to the task list.",
+    "in_progress_tasks": "In Progress Tasks",
+    "select_due_date": "Select Due Date",
+    "planned_tasks": "Planned Tasks",
+    "all_tasks": "All tasks",
+    "task_priority": "Task Priority",
+    "task_name": "Task Name",
+    "task_description": "Task Description",
+    "task_owner": "Task Owner",
+    "no_tasks": "No tasks in progress available",
+    "error": "Error",
+    "name": "Name: {name}",
+    "description_name": "Description: {description}",
+    "owner": "Owner: {owner}",
+    "date": "Due Date: {dueDate}",
+    "priority": "Priority: {priority}",
+    "selected_date": "Selected Due Date: {selectedDate}"
 }
