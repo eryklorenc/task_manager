@@ -7,5 +7,6 @@ class PlannedState with _$PlannedState {
     @Default('') String errorMessage,
     @Default(false) bool isLoading,
     List<DocumentSnapshot>? documents,
+    @Default('') String address,
   }) = _PlannedState;
 }

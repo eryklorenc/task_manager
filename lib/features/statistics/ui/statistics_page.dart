@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:task_manager/app/core/theme/app_colors.dart';
 import 'package:task_manager/app/core/theme/app_text_theme_extension.dart';
+import 'package:task_manager/app/core/utils/injection_container.dart';
 import 'package:task_manager/generated/l10n.dart';
 import 'package:task_manager/features/done/cubit/done_cubit.dart';
 import 'package:task_manager/features/planned/cubit/planned_cubit.dart';
@@ -21,7 +23,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
           create: (context) => DoneCubit()..loadDocuments(),
         ),
         BlocProvider<PlannedCubit>(
-          create: (context) => PlannedCubit()..loadDocuments(),
+          create: (context) => getIt<PlannedCubit>()..loadDocuments(),
         ),
       ],
       child: Scaffold(
@@ -52,6 +54,16 @@ class _StatisticsPageState extends State<StatisticsPage> {
                       Text(S.of(context).task_week(tasksDoneThisWeek)),
                       Text(S.of(context).planned_task_stat(plannedTasks)),
                       Text(S.of(context).percentage_task(completedPercentage.toStringAsFixed(2))),
+                      Row(
+                        children: [
+                          const Icon(Icons.location_city),
+                          const SizedBox(width: 5),
+                          Text(
+                            plannedState.address,
+                            style: Theme.of(context).textTheme.titleSmall?.copyWith(color: AppColors.main),
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                 );

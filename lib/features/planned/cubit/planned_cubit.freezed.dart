@@ -21,6 +21,7 @@ mixin _$PlannedState {
   bool get isLoading => throw _privateConstructorUsedError;
   List<DocumentSnapshot<Object?>>? get documents =>
       throw _privateConstructorUsedError;
+  String get address => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $PlannedStateCopyWith<PlannedState> get copyWith =>
@@ -37,7 +38,8 @@ abstract class $PlannedStateCopyWith<$Res> {
       {List<TaskModel> items,
       String errorMessage,
       bool isLoading,
-      List<DocumentSnapshot<Object?>>? documents});
+      List<DocumentSnapshot<Object?>>? documents,
+      String address});
 }
 
 /// @nodoc
@@ -57,6 +59,7 @@ class _$PlannedStateCopyWithImpl<$Res, $Val extends PlannedState>
     Object? errorMessage = null,
     Object? isLoading = null,
     Object? documents = freezed,
+    Object? address = null,
   }) {
     return _then(_value.copyWith(
       items: null == items
@@ -75,6 +78,10 @@ class _$PlannedStateCopyWithImpl<$Res, $Val extends PlannedState>
           ? _value.documents
           : documents // ignore: cast_nullable_to_non_nullable
               as List<DocumentSnapshot<Object?>>?,
+      address: null == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -91,7 +98,8 @@ abstract class _$$PlannedStateImplCopyWith<$Res>
       {List<TaskModel> items,
       String errorMessage,
       bool isLoading,
-      List<DocumentSnapshot<Object?>>? documents});
+      List<DocumentSnapshot<Object?>>? documents,
+      String address});
 }
 
 /// @nodoc
@@ -109,6 +117,7 @@ class __$$PlannedStateImplCopyWithImpl<$Res>
     Object? errorMessage = null,
     Object? isLoading = null,
     Object? documents = freezed,
+    Object? address = null,
   }) {
     return _then(_$PlannedStateImpl(
       items: null == items
@@ -127,6 +136,10 @@ class __$$PlannedStateImplCopyWithImpl<$Res>
           ? _value._documents
           : documents // ignore: cast_nullable_to_non_nullable
               as List<DocumentSnapshot<Object?>>?,
+      address: null == address
+          ? _value.address
+          : address // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -138,7 +151,8 @@ class _$PlannedStateImpl implements _PlannedState {
       {final List<TaskModel> items = const [],
       this.errorMessage = '',
       this.isLoading = false,
-      final List<DocumentSnapshot<Object?>>? documents})
+      final List<DocumentSnapshot<Object?>>? documents,
+      this.address = ''})
       : _items = items,
         _documents = documents;
 
@@ -168,8 +182,12 @@ class _$PlannedStateImpl implements _PlannedState {
   }
 
   @override
+  @JsonKey()
+  final String address;
+
+  @override
   String toString() {
-    return 'PlannedState(items: $items, errorMessage: $errorMessage, isLoading: $isLoading, documents: $documents)';
+    return 'PlannedState(items: $items, errorMessage: $errorMessage, isLoading: $isLoading, documents: $documents, address: $address)';
   }
 
   @override
@@ -183,7 +201,8 @@ class _$PlannedStateImpl implements _PlannedState {
             (identical(other.isLoading, isLoading) ||
                 other.isLoading == isLoading) &&
             const DeepCollectionEquality()
-                .equals(other._documents, _documents));
+                .equals(other._documents, _documents) &&
+            (identical(other.address, address) || other.address == address));
   }
 
   @override
@@ -192,7 +211,8 @@ class _$PlannedStateImpl implements _PlannedState {
       const DeepCollectionEquality().hash(_items),
       errorMessage,
       isLoading,
-      const DeepCollectionEquality().hash(_documents));
+      const DeepCollectionEquality().hash(_documents),
+      address);
 
   @JsonKey(ignore: true)
   @override
@@ -206,7 +226,8 @@ abstract class _PlannedState implements PlannedState {
       {final List<TaskModel> items,
       final String errorMessage,
       final bool isLoading,
-      final List<DocumentSnapshot<Object?>>? documents}) = _$PlannedStateImpl;
+      final List<DocumentSnapshot<Object?>>? documents,
+      final String address}) = _$PlannedStateImpl;
 
   @override
   List<TaskModel> get items;
@@ -216,6 +237,8 @@ abstract class _PlannedState implements PlannedState {
   bool get isLoading;
   @override
   List<DocumentSnapshot<Object?>>? get documents;
+  @override
+  String get address;
   @override
   @JsonKey(ignore: true)
   _$$PlannedStateImplCopyWith<_$PlannedStateImpl> get copyWith =>

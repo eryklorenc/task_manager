@@ -2,11 +2,13 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:task_manager/domain/models/task_model.dart';
 
 part 'in_progress_state.dart';
 part 'in_progress_cubit.freezed.dart';
 
+@injectable
 class InProgressCubit extends Cubit<InProgressState> {
   InProgressCubit() : super(const InProgressState());
 

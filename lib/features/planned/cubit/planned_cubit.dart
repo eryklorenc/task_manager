@@ -2,16 +2,33 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:task_manager/domain/models/task_model.dart';
+import 'package:task_manager/domain/repositories/location_repository.dart';
 
 part 'planned_state.dart';
 part 'planned_cubit.freezed.dart';
 
+@injectable
 class PlannedCubit extends Cubit<PlannedState> {
-  PlannedCubit() : super(const PlannedState());
+  final LocationRepository _locationRepository;
+  StreamSubscription<String>? _addressSubscription;
+
+  PlannedCubit(this._locationRepository) : super(const PlannedState()) {
+    _init();
+  }
 
   final _firestore = FirebaseFirestore.instance;
   late StreamSubscription<QuerySnapshot> _streamSubscription;
+
+  FutureOr<void> _init() {
+    _locationRepository.getCurrentLocation();
+    _addressSubscription = _locationRepository.addressStream.listen(
+      (address) {
+        emit(state.copyWith(address: address));
+      },
+    );
+  }
 
   void loadDocuments() {
     emit(state.copyWith(isLoading: true));
@@ -51,6 +68,7 @@ class PlannedCubit extends Cubit<PlannedState> {
 
   @override
   Future<void> close() {
+    _addressSubscription?.cancel();
     _streamSubscription.cancel();
     return super.close();
   }

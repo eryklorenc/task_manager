@@ -2,11 +2,13 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 import 'package:task_manager/domain/models/task_model.dart';
 
 part 'add_task_state.dart';
 part 'add_task_cubit.freezed.dart';
 
+@injectable
 class AddTaskCubit extends Cubit<AddTaskState> {
   AddTaskCubit() : super(const AddTaskState());
 

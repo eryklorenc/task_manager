@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_manager/app/core/theme/app_colors.dart';
 import 'package:task_manager/app/core/theme/app_text_theme_extension.dart';
+import 'package:task_manager/app/core/utils/injection_container.dart';
 import 'package:task_manager/app/core/utils/screen_size.dart';
 import 'package:task_manager/features/planned/cubit/planned_cubit.dart';
 import 'package:task_manager/generated/l10n.dart';
@@ -19,7 +20,7 @@ class PlannedPage extends StatelessWidget {
         ),
       ),
       body: BlocProvider(
-        create: (context) => PlannedCubit()..loadDocuments(),
+        create: (context) => getIt<PlannedCubit>()..loadDocuments(),
         child: BlocBuilder<PlannedCubit, PlannedState>(
           builder: (context, state) {
             if (state.isLoading) {

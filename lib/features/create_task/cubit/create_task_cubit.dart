@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:injectable/injectable.dart';
 
 part 'create_task_state.dart';
 part 'create_task_cubit.freezed.dart';
 
+@injectable
 class CreateTaskCubit extends Cubit<CreateTaskState> {
   CreateTaskCubit() : super(const CreateTaskState());
 
