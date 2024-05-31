@@ -406,6 +406,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Get notification for tasks ending tomorrow`
+  String get get_notification {
+    return Intl.message(
+      'Get notification for tasks ending tomorrow',
+      name: 'get_notification',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Your task is due tomorrow!`
+  String get task_notification {
+    return Intl.message(
+      'Your task is due tomorrow!',
+      name: 'task_notification',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Payload`
+  String get payload {
+    return Intl.message(
+      'Payload',
+      name: 'payload',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

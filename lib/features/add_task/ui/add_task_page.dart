@@ -69,20 +69,51 @@ class _AddTaskPageState extends State<AddTaskPage> {
                                 item.priority,
                                 item.id,
                               ),
-                              ElevatedButton(
-                                onPressed: () {
-                                  NotificationDataSources.sendInstantNotification(
-                                    title: "Task Due Soon",
-                                    body: 'Your task "${item.name}" is due tomorrow!',
-                                    payload: "Task ID: ${item.id}",
-                                  );
-                                },
-                                child: const Text('Notify About This Task'),
-                              ),
                             ],
                           ),
                         ),
                       ],
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Spacer(flex: 1),
+                          Text(
+                            S.of(context).get_notification,
+                            style: Theme.of(context).xTextTheme.body2,
+                          ),
+                          const Spacer(),
+                          Padding(
+                            padding: const EdgeInsetsSS.only(right: 2),
+                            child: Switch(
+                              value: isSelected,
+                              onChanged: (value) {
+                                setState(() {
+                                  isSelected = value;
+                                });
+
+                                if (value) {
+                                  final tomorrow = DateTime.now().add(const Duration(days: 1));
+
+                                  for (final taskItem in item) {
+                                    if (taskItem.dueDate.year == tomorrow.year &&
+                                        taskItem.dueDate.month == tomorrow.month &&
+                                        taskItem.dueDate.day == tomorrow.day) {
+                                      NotificationDataSources.sendPeriodicNotification(
+                                        title: taskItem.name,
+                                        body: S.of(context).task_notification,
+                                        payload: S.of(context).payload,
+                                        id: taskItem.name.hashCode,
+                                      );
+                                    }
+                                  }
+                                } else {
+                                  NotificationDataSources.cancelPeriodicNotification();
+                                }
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
                     ],
                   );
                 },
@@ -123,35 +154,6 @@ class _AddTaskPageState extends State<AddTaskPage> {
                 },
               ),
             ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Spacer(
-                flex: 2,
-              ),
-              const Text("Get notification every minute"),
-              const Spacer(),
-              Switch(
-                value: isSelected,
-                onChanged: (value) {
-                  isSelected = !isSelected;
-                  if (isSelected) {
-                    NotificationDataSources.sendPeriodicNotification(
-                      title: "Test title 2",
-                      body: "Test body 2",
-                      payload: "Test payload 2",
-                    );
-                  } else {
-                    NotificationDataSources.cancelPeriodicNotification();
-                  }
-                  setState(() {});
-                },
-              ),
-              const Spacer(
-                flex: 2,
-              ),
-            ],
           ),
         ],
       ),

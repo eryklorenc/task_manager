@@ -35,5 +35,8 @@
     "percentage_task": "Percentage implementation of planned tasks: {completedPercentage}%",
     "edit_task": "Edit task",
     "save": "Save",
-    "edit": "Edit"
+    "edit": "Edit",
+    "get_notification": "Get notification for tasks ending tomorrow",
+    "task_notification": "Your task is due tomorrow!",
+    "payload": "Payload"
 }

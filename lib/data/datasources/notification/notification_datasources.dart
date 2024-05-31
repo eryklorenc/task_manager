@@ -50,12 +50,13 @@ class NotificationDataSources {
     );
   }
 
-  static void sendPeriodicNotification({required String title, required String body, required String payload}) {
+  static void sendPeriodicNotification(
+      {required String title, required String body, required String payload, required int id}) {
     flutterLocalNotificationsPlugin.periodicallyShow(
-      1,
+      id,
       title,
       body,
-      RepeatInterval.everyMinute,
+      RepeatInterval.daily,
       notificationDetails,
       payload: payload,
     );
