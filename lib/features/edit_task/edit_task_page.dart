@@ -30,6 +30,7 @@ class EditTaskPageState extends State<EditTaskPage> {
     _taskDescriptionController = TextEditingController();
     _taskOwnerController = TextEditingController();
     _selectedDateController = TextEditingController();
+    _selectedPriority = '';
 
     _fetchTask(widget.taskId);
   }
@@ -156,7 +157,7 @@ class EditTaskPageState extends State<EditTaskPage> {
 
   Widget _buildPriorityDropdownButton(BuildContext context) {
     return DropdownButtonFormField<String>(
-      value: _selectedPriority,
+      value: _selectedPriority.isNotEmpty ? _selectedPriority : TaskPriorities.priorities.first,
       decoration: InputDecoration(
         labelText: S.of(context).task_priority,
         filled: true,

@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_manager/app/core/theme/app_colors.dart';
 import 'package:task_manager/app/core/theme/app_text_theme_extension.dart';
 import 'package:task_manager/app/core/utils/screen_size.dart';
+import 'package:task_manager/data/datasources/notification/notification_datasources.dart';
 import 'package:task_manager/features/add_task/cubit/add_task_cubit.dart';
 import 'package:task_manager/features/add_task/widgets/task_widget.dart';
 import 'package:task_manager/features/create_task/ui/create_task_page.dart';
@@ -16,6 +17,13 @@ class AddTaskPage extends StatefulWidget {
 }
 
 final controller = TextEditingController();
+
+bool isSelected = false;
+
+@override
+void initState() {
+  NotificationDataSources.askForNotificationPermission();
+}
 
 class _AddTaskPageState extends State<AddTaskPage> {
   @override
@@ -46,12 +54,34 @@ class _AddTaskPageState extends State<AddTaskPage> {
                     children: [
                       for (final item in item) ...[
                         Dismissible(
-                            key: ValueKey(item.id),
-                            onDismissed: (_) {
-                              context.read<AddTaskCubit>().deleteDocument(item.id);
-                            },
-                            child: taskWidget(context, item.name, item.description, item.owner, item.dueDate,
-                                item.priority, item.id)),
+                          key: ValueKey(item.id),
+                          onDismissed: (_) {
+                            context.read<AddTaskCubit>().deleteDocument(item.id);
+                          },
+                          child: Column(
+                            children: [
+                              taskWidget(
+                                context,
+                                item.name,
+                                item.description,
+                                item.owner,
+                                item.dueDate,
+                                item.priority,
+                                item.id,
+                              ),
+                              ElevatedButton(
+                                onPressed: () {
+                                  NotificationDataSources.sendInstantNotification(
+                                    title: "Task Due Soon",
+                                    body: 'Your task "${item.name}" is due tomorrow!',
+                                    payload: "Task ID: ${item.id}",
+                                  );
+                                },
+                                child: const Text('Notify About This Task'),
+                              ),
+                            ],
+                          ),
+                        ),
                       ],
                     ],
                   );
@@ -93,6 +123,35 @@ class _AddTaskPageState extends State<AddTaskPage> {
                 },
               ),
             ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Spacer(
+                flex: 2,
+              ),
+              const Text("Get notification every minute"),
+              const Spacer(),
+              Switch(
+                value: isSelected,
+                onChanged: (value) {
+                  isSelected = !isSelected;
+                  if (isSelected) {
+                    NotificationDataSources.sendPeriodicNotification(
+                      title: "Test title 2",
+                      body: "Test body 2",
+                      payload: "Test payload 2",
+                    );
+                  } else {
+                    NotificationDataSources.cancelPeriodicNotification();
+                  }
+                  setState(() {});
+                },
+              ),
+              const Spacer(
+                flex: 2,
+              ),
+            ],
           ),
         ],
       ),
