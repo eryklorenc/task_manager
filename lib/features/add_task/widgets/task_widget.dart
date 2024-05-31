@@ -19,7 +19,7 @@ Widget taskWidget(
     margin: const EdgeInsetsSS.symmetric(horizontal: 5, vertical: 0.3),
     decoration: BoxDecoration(
       color: AppColors.white,
-      borderRadius: BorderRadius.circular(10.0),
+      borderRadius: BorderRadius.circular(10),
       border: Border.all(
         color: AppColors.main,
         width: 1,
@@ -68,7 +68,7 @@ Widget taskWidget(
             style: ElevatedButton.styleFrom(
               backgroundColor: AppColors.main,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
+                borderRadius: BorderRadius.circular(10),
               ),
             ),
             child: Text(
