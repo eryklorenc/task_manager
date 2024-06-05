@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:task_manager/app/core/theme/app_text_theme_extension.dart';
 import 'package:task_manager/app/core/utils/injection_container.dart';
 import 'package:task_manager/domain/models/weather_model.dart';
 import 'package:task_manager/domain/repositories/weather/weather_repository.dart';
@@ -47,6 +48,7 @@ class WeatherPageState extends State<WeatherPage> {
           appBar: AppBar(
             title: Text(
               S.of(context).weather,
+              style: Theme.of(context).xTextTheme.body1,
             ),
           ),
           body: Padding(
@@ -58,12 +60,24 @@ class WeatherPageState extends State<WeatherPage> {
                     ? Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('City: ${_weather!.city}'),
-                          Text('Temperature: ${_weather!.temperature}°C'),
-                          Text('Wind: ${_weather!.wind} mph'),
-                          Text('Humidity: ${_weather!.humidity}%'),
-                          Text('Feels Like: ${_weather!.feelslike}°C'),
-                          Text('Pressure: ${_weather!.pressure} in'),
+                          Text(
+                            S.of(context).weather_city(_weather!.city),
+                          ),
+                          Text(
+                            S.of(context).weather_temp(_weather!.temperature),
+                          ),
+                          Text(
+                            S.of(context).weather_wind(_weather!.wind),
+                          ),
+                          Text(
+                            S.of(context).weather_humidity(_weather!.humidity),
+                          ),
+                          Text(
+                            S.of(context).weather_like(_weather!.feelslike),
+                          ),
+                          Text(
+                            S.of(context).weather_pressure(_weather!.pressure),
+                          ),
                         ],
                       )
                     : Container(),

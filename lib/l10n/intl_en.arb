@@ -39,5 +39,11 @@
     "get_notification": "Get notification for tasks ending tomorrow",
     "task_notification": "Your task is due tomorrow!",
     "payload": "Payload",
-    "weather": "Weather"
+    "weather": "Weather",
+    "weather_city": "City: {weathercity}",
+    "weather_temp": "Temperature: {weathertemperature}°C",
+    "weather_wind": "Wind: {weatherwind} mph",
+    "weather_humidity": "Humidity: {weatherhumidity}%",
+    "weather_like": "Feels Like: {weatherfeelslike}°C",
+    "weather_pressure": "Pressure: {weatherpressure} in"
 }

@@ -39,6 +39,18 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m9(tasksDoneThisWeek) => "Number of tasks completed this week: ${tasksDoneThisWeek}";
 
+  static m10(weathercity) => "City: ${weathercity}";
+
+  static m11(weatherhumidity) => "Humidity: ${weatherhumidity}%";
+
+  static m12(weatherfeelslike) => "Feels Like: ${weatherfeelslike}°C";
+
+  static m13(weatherpressure) => "Pressure: ${weatherpressure} in";
+
+  static m14(weathertemperature) => "Temperature: ${weathertemperature}°C";
+
+  static m15(weatherwind) => "Wind: ${weatherwind} mph";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
     "action" : MessageLookupByLibrary.simpleMessage("Plan, act, achieve goals!"),
@@ -80,6 +92,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "task_priority" : MessageLookupByLibrary.simpleMessage("Task Priority"),
     "task_week" : m9,
     "weather" : MessageLookupByLibrary.simpleMessage("Weather"),
+    "weather_city" : m10,
+    "weather_humidity" : m11,
+    "weather_like" : m12,
+    "weather_pressure" : m13,
+    "weather_temp" : m14,
+    "weather_wind" : m15,
     "welcome" : MessageLookupByLibrary.simpleMessage("Welcome back!")
   };
 }

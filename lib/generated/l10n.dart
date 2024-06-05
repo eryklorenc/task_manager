@@ -446,6 +446,66 @@ class S {
       args: [],
     );
   }
+
+  /// `City: {weathercity}`
+  String weather_city(Object weathercity) {
+    return Intl.message(
+      'City: $weathercity',
+      name: 'weather_city',
+      desc: '',
+      args: [weathercity],
+    );
+  }
+
+  /// `Temperature: {weathertemperature}°C`
+  String weather_temp(Object weathertemperature) {
+    return Intl.message(
+      'Temperature: $weathertemperature°C',
+      name: 'weather_temp',
+      desc: '',
+      args: [weathertemperature],
+    );
+  }
+
+  /// `Wind: {weatherwind} mph`
+  String weather_wind(Object weatherwind) {
+    return Intl.message(
+      'Wind: $weatherwind mph',
+      name: 'weather_wind',
+      desc: '',
+      args: [weatherwind],
+    );
+  }
+
+  /// `Humidity: {weatherhumidity}%`
+  String weather_humidity(Object weatherhumidity) {
+    return Intl.message(
+      'Humidity: $weatherhumidity%',
+      name: 'weather_humidity',
+      desc: '',
+      args: [weatherhumidity],
+    );
+  }
+
+  /// `Feels Like: {weatherfeelslike}°C`
+  String weather_like(Object weatherfeelslike) {
+    return Intl.message(
+      'Feels Like: $weatherfeelslike°C',
+      name: 'weather_like',
+      desc: '',
+      args: [weatherfeelslike],
+    );
+  }
+
+  /// `Pressure: {weatherpressure} in`
+  String weather_pressure(Object weatherpressure) {
+    return Intl.message(
+      'Pressure: $weatherpressure in',
+      name: 'weather_pressure',
+      desc: '',
+      args: [weatherpressure],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
