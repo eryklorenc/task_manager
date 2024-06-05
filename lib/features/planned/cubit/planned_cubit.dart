@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:task_manager/domain/models/task_model.dart';
-import 'package:task_manager/domain/repositories/location_repository.dart';
+import 'package:task_manager/domain/repositories/location/location_repository.dart';
 
 part 'planned_state.dart';
 part 'planned_cubit.freezed.dart';

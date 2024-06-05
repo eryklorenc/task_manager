@@ -10,7 +10,7 @@
     "assistant": "Your personal assistant for task management.",
     "action": "Plan, act, achieve goals!",
     "create": "Create task",
-    "description": "Add a new task by pressing the 'Create task' button. Once pressed, you will be taken to a screen where you can enter details of the new task, such as title, description, date, etc. Once saved, the task will be added to the task list.",
+    "description": "Add a new task by pressing the Create task button. Once pressed, you will be taken to a screen where you can enter details of the new task, such as title, description, date, etc. Once saved, the task will be added to the task list.",
     "in_progress_tasks": "In Progress Tasks",
     "select_due_date": "Select Due Date",
     "planned_tasks": "Planned Tasks",
@@ -38,5 +38,6 @@
     "edit": "Edit",
     "get_notification": "Get notification for tasks ending tomorrow",
     "task_notification": "Your task is due tomorrow!",
-    "payload": "Payload"
+    "payload": "Payload",
+    "weather": "Weather"
 }

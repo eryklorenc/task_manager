@@ -47,7 +47,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "assistant" : MessageLookupByLibrary.simpleMessage("Your personal assistant for task management."),
     "create" : MessageLookupByLibrary.simpleMessage("Create task"),
     "date" : m0,
-    "description" : MessageLookupByLibrary.simpleMessage("Add a new task by pressing the \'Create task\' button. Once pressed, you will be taken to a screen where you can enter details of the new task, such as title, description, date, etc. Once saved, the task will be added to the task list."),
+    "description" : MessageLookupByLibrary.simpleMessage("Add a new task by pressing the Create task button. Once pressed, you will be taken to a screen where you can enter details of the new task, such as title, description, date, etc. Once saved, the task will be added to the task list."),
     "description_name" : m1,
     "done" : MessageLookupByLibrary.simpleMessage("Done"),
     "edit" : MessageLookupByLibrary.simpleMessage("Edit"),
@@ -79,6 +79,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "task_owner" : MessageLookupByLibrary.simpleMessage("Task Owner"),
     "task_priority" : MessageLookupByLibrary.simpleMessage("Task Priority"),
     "task_week" : m9,
+    "weather" : MessageLookupByLibrary.simpleMessage("Weather"),
     "welcome" : MessageLookupByLibrary.simpleMessage("Welcome back!")
   };
 }

@@ -12,8 +12,12 @@ import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 import 'package:task_manager/data/datasources/location/location_datasources.dart'
     as _i7;
-import 'package:task_manager/domain/repositories/location_repository.dart'
+import 'package:task_manager/data/datasources/weather/weather_datasources.dart'
+    as _i10;
+import 'package:task_manager/domain/repositories/location/location_repository.dart'
     as _i8;
+import 'package:task_manager/domain/repositories/weather/weather_repository.dart'
+    as _i11;
 import 'package:task_manager/features/add_task/cubit/add_task_cubit.dart'
     as _i3;
 import 'package:task_manager/features/create_task/cubit/create_task_cubit.dart'
@@ -43,6 +47,9 @@ extension GetItInjectableX on _i1.GetIt {
         () => _i8.LocationRepository(gh<_i7.LocationDataSource>()));
     gh.factory<_i9.PlannedCubit>(
         () => _i9.PlannedCubit(gh<_i8.LocationRepository>()));
+    gh.factory<_i10.WeatherDataSource>(() => _i10.WeatherDataSource());
+    gh.factory<_i11.WeatherRepository>(
+        () => _i11.WeatherRepository(gh<_i10.WeatherDataSource>()));
     return this;
   }
 }

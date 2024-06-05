@@ -12,6 +12,7 @@ import 'package:task_manager/features/in_progress/ui/in_progress_page.dart';
 import 'package:task_manager/features/planned/cubit/planned_cubit.dart';
 import 'package:task_manager/features/planned/ui/planned_page.dart';
 import 'package:task_manager/features/statistics/ui/statistics_page.dart';
+import 'package:task_manager/features/weather/ui/weather_page.dart';
 import 'package:task_manager/generated/l10n.dart';
 
 class HomePage extends StatelessWidget {
@@ -101,6 +102,21 @@ Widget buildUserScreen(BuildContext context) {
                             builder: (context) => BlocProvider(
                               create: (context) => getIt<PlannedCubit>(),
                               child: const StatisticsPage(),
+                            ),
+                          ),
+                        );
+                      },
+                      context: context),
+                  settingsList(
+                      icon: Icons.sunny,
+                      title: S.of(context).weather,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => BlocProvider(
+                              create: (context) => getIt<PlannedCubit>()..loadDocuments(),
+                              child: const WeatherPage(),
                             ),
                           ),
                         );
