@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:task_manager/generated/l10n.dart';
 
 class DisplayPayload extends StatefulWidget {
   final String? payloadData;
@@ -14,7 +15,7 @@ class _DisplayPayloadState extends State<DisplayPayload> {
     return Scaffold(
       body: Center(
         child: Text(
-          widget.payloadData ?? "No payload data found",
+          widget.payloadData ?? S.of(context).task_priority,
         ),
       ),
     );

@@ -506,6 +506,16 @@ class S {
       args: [weatherpressure],
     );
   }
+
+  /// `No payload data found`
+  String get no_payload {
+    return Intl.message(
+      'No payload data found',
+      name: 'no_payload',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

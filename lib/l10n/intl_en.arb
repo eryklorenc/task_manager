@@ -45,5 +45,6 @@
     "weather_wind": "Wind: {weatherwind} mph",
     "weather_humidity": "Humidity: {weatherhumidity}%",
     "weather_like": "Feels Like: {weatherfeelslike}°C",
-    "weather_pressure": "Pressure: {weatherpressure} in"
+    "weather_pressure": "Pressure: {weatherpressure} in",
+    "no_payload": "No payload data found"
 }
