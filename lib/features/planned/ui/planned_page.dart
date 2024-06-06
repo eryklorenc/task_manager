@@ -8,7 +8,7 @@ import 'package:task_manager/features/planned/cubit/planned_cubit.dart';
 import 'package:task_manager/generated/l10n.dart';
 
 class PlannedPage extends StatelessWidget {
-  const PlannedPage({Key? key}) : super(key: key);
+  const PlannedPage({super.key});
 
   @override
   Widget build(BuildContext context) {

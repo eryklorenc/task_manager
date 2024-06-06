@@ -16,9 +16,7 @@ import 'package:task_manager/features/weather/ui/weather_page.dart';
 import 'package:task_manager/generated/l10n.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({
-    super.key,
-  });
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -7,7 +7,7 @@ import 'package:task_manager/features/done/cubit/done_cubit.dart';
 import 'package:task_manager/generated/l10n.dart';
 
 class DonePage extends StatelessWidget {
-  const DonePage({Key? key}) : super(key: key);
+  const DonePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +45,7 @@ class DonePage extends StatelessWidget {
                   margin: const EdgeInsetsSS.symmetric(horizontal: 5, vertical: 0.3),
                   decoration: BoxDecoration(
                     color: AppColors.white,
-                    borderRadius: BorderRadius.circular(10.0),
+                    borderRadius: BorderRadius.circular(10),
                     border: Border.all(
                       color: AppColors.main,
                       width: 1,

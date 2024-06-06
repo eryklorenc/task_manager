@@ -3,11 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_manager/app/core/config/enums.dart';
 import 'package:task_manager/app/core/theme/app_colors.dart';
 import 'package:task_manager/app/core/theme/app_text_theme_extension.dart';
+import 'package:task_manager/app/core/utils/screen_size.dart';
 import 'package:task_manager/features/create_task/cubit/create_task_cubit.dart';
 import 'package:task_manager/generated/l10n.dart';
 
 class CreateTaskPage extends StatefulWidget {
-  const CreateTaskPage({Key? key}) : super(key: key);
+  const CreateTaskPage({super.key});
 
   @override
   CreateTaskPageState createState() => CreateTaskPageState();
@@ -48,24 +49,24 @@ class CreateTaskPageState extends State<CreateTaskPage> {
               ),
             ),
             body: Padding(
-              padding: const EdgeInsets.all(12.0),
+              padding: const EdgeInsetsSS.all(3),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   _buildTextField(_taskNameController, S.of(context).task_name),
-                  const SizedBox(height: 12.0),
+                  const SizedBox(height: 12),
                   _buildTextField(_taskDescriptionController, S.of(context).task_description),
-                  const SizedBox(height: 12.0),
+                  const SizedBox(height: 12),
                   _buildTextField(_taskOwnerController, S.of(context).task_owner),
-                  const SizedBox(height: 12.0),
+                  const SizedBox(height: 12),
                   _buildPriorityDropdownButton(context, state),
-                  const SizedBox(height: 12.0),
+                  const SizedBox(height: 12),
                   ElevatedButton(
                     onPressed: () => context.read<CreateTaskCubit>().selectDate(context),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppColors.main,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
+                        borderRadius: BorderRadius.circular(10),
                       ),
                     ),
                     child: Text(
@@ -73,9 +74,9 @@ class CreateTaskPageState extends State<CreateTaskPage> {
                       style: Theme.of(context).xTextTheme.body4,
                     ),
                   ),
-                  const SizedBox(height: 12.0),
+                  const SizedBox(height: 12),
                   Text((state.selectedDate?.toLocal() ?? DateTime.now()).toString().split(' ')[0]),
-                  const SizedBox(height: 12.0),
+                  const SizedBox(height: 12),
                   ElevatedButton(
                     onPressed: () {
                       if (state.selectedDate != null && _taskNameController.text.isNotEmpty) {
@@ -100,7 +101,7 @@ class CreateTaskPageState extends State<CreateTaskPage> {
                     style: ElevatedButton.styleFrom(
                       backgroundColor: AppColors.main,
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0),
+                        borderRadius: BorderRadius.circular(10),
                       ),
                     ),
                     child: Text(
@@ -125,7 +126,7 @@ class CreateTaskPageState extends State<CreateTaskPage> {
         filled: true,
         fillColor: AppColors.white,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.0),
+          borderRadius: BorderRadius.circular(10),
           borderSide: const BorderSide(color: AppColors.blue),
         ),
       ),
@@ -140,7 +141,7 @@ class CreateTaskPageState extends State<CreateTaskPage> {
         filled: true,
         fillColor: AppColors.white,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.0),
+          borderRadius: BorderRadius.circular(10),
           borderSide: const BorderSide(color: AppColors.blue),
         ),
       ),

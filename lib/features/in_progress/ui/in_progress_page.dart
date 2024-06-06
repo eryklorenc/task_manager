@@ -7,7 +7,7 @@ import 'package:task_manager/features/in_progress/cubit/in_progress_cubit.dart';
 import 'package:task_manager/generated/l10n.dart';
 
 class InProgressPage extends StatelessWidget {
-  const InProgressPage({Key? key}) : super(key: key);
+  const InProgressPage({super.key});
 
   @override
   Widget build(BuildContext context) {

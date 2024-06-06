@@ -3,12 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_manager/app/core/theme/app_colors.dart';
 import 'package:task_manager/app/core/theme/app_text_theme_extension.dart';
 import 'package:task_manager/app/core/utils/injection_container.dart';
+import 'package:task_manager/app/core/utils/screen_size.dart';
 import 'package:task_manager/generated/l10n.dart';
 import 'package:task_manager/features/done/cubit/done_cubit.dart';
 import 'package:task_manager/features/planned/cubit/planned_cubit.dart';
 
 class StatisticsPage extends StatefulWidget {
-  const StatisticsPage({Key? key}) : super(key: key);
+  const StatisticsPage({super.key});
 
   @override
   State<StatisticsPage> createState() => _StatisticsPageState();
@@ -20,7 +21,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
     return MultiBlocProvider(
       providers: [
         BlocProvider<DoneCubit>(
-          create: (context) => DoneCubit()..loadDocuments(),
+          create: (context) => getIt<DoneCubit>()..loadDocuments(),
         ),
         BlocProvider<PlannedCubit>(
           create: (context) => getIt<PlannedCubit>()..loadDocuments(),
@@ -46,7 +47,7 @@ class _StatisticsPageState extends State<StatisticsPage> {
                 final double completedPercentage = (tasksDone / (plannedTasks + tasksDone)) * 100;
 
                 return Padding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsetsSS.all(5),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

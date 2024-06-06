@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_manager/app/core/config/enums.dart';
 import 'package:task_manager/app/core/theme/app_colors.dart';
 import 'package:task_manager/app/core/theme/app_text_theme_extension.dart';
+import 'package:task_manager/app/core/utils/screen_size.dart';
 import 'package:task_manager/features/edit_task/cubit/edit_task_page_cubit.dart';
 import 'package:task_manager/features/edit_task/cubit/edit_task_page_state.dart';
 import 'package:task_manager/generated/l10n.dart';
@@ -10,7 +11,7 @@ import 'package:task_manager/generated/l10n.dart';
 class EditTaskPage extends StatelessWidget {
   final String taskId;
 
-  const EditTaskPage({required this.taskId, Key? key}) : super(key: key);
+  const EditTaskPage({super.key, required this.taskId});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class EditTaskPage extends StatelessWidget {
 class _EditTaskPageView extends StatelessWidget {
   final String taskId;
 
-  const _EditTaskPageView({required this.taskId, Key? key}) : super(key: key);
+  const _EditTaskPageView({required this.taskId});
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +45,7 @@ class _EditTaskPageView extends StatelessWidget {
           }
 
           return Padding(
-            padding: const EdgeInsets.all(12.0),
+            padding: const EdgeInsetsSS.all(3),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -54,27 +55,27 @@ class _EditTaskPageView extends StatelessWidget {
                   labelText: S.of(context).task_name,
                   onChanged: (value) => context.read<EditTaskPageCubit>().updateTaskName(value),
                 ),
-                const SizedBox(height: 12.0),
+                const SizedBox(height: 12),
                 _buildTextField(
                   context,
                   initialValue: state.taskDescription,
                   labelText: S.of(context).task_description,
                   onChanged: (value) => context.read<EditTaskPageCubit>().updateTaskDescription(value),
                 ),
-                const SizedBox(height: 12.0),
+                const SizedBox(height: 12),
                 _buildTextField(
                   context,
                   initialValue: state.taskOwner,
                   labelText: S.of(context).task_owner,
                   onChanged: (value) => context.read<EditTaskPageCubit>().updateTaskOwner(value),
                 ),
-                const SizedBox(height: 12.0),
+                const SizedBox(height: 12),
                 ElevatedButton(
                   onPressed: () => _selectDate(context),
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.main,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
+                      borderRadius: BorderRadius.circular(10),
                     ),
                   ),
                   child: Text(
@@ -82,13 +83,13 @@ class _EditTaskPageView extends StatelessWidget {
                     style: Theme.of(context).xTextTheme.body4,
                   ),
                 ),
-                const SizedBox(height: 12.0),
+                const SizedBox(height: 12),
                 Text(
                   state.selectedDate.isNotEmpty ? state.selectedDate.split(' ')[0] : '',
                 ),
-                const SizedBox(height: 12.0),
+                const SizedBox(height: 12),
                 _buildPriorityDropdownButton(context, state),
-                const SizedBox(height: 12.0),
+                const SizedBox(height: 12),
                 ElevatedButton(
                   onPressed: () {
                     context.read<EditTaskPageCubit>().editTask(taskId);
@@ -96,7 +97,7 @@ class _EditTaskPageView extends StatelessWidget {
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.main,
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
+                      borderRadius: BorderRadius.circular(10),
                     ),
                   ),
                   child: Text(
