@@ -1,74 +1,30 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:task_manager/app/core/config/enums.dart';
 import 'package:task_manager/app/core/theme/app_colors.dart';
 import 'package:task_manager/app/core/theme/app_text_theme_extension.dart';
+import 'package:task_manager/features/edit_task/cubit/edit_task_page_cubit.dart';
+import 'package:task_manager/features/edit_task/cubit/edit_task_page_state.dart';
 import 'package:task_manager/generated/l10n.dart';
 
-class EditTaskPage extends StatefulWidget {
+class EditTaskPage extends StatelessWidget {
   final String taskId;
 
   const EditTaskPage({required this.taskId, Key? key}) : super(key: key);
 
   @override
-  EditTaskPageState createState() => EditTaskPageState();
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (_) => EditTaskPageCubit()..fetchTask(taskId),
+      child: _EditTaskPageView(taskId: taskId),
+    );
+  }
 }
 
-class EditTaskPageState extends State<EditTaskPage> {
-  late TextEditingController _taskNameController;
-  late TextEditingController _taskDescriptionController;
-  late TextEditingController _taskOwnerController;
-  late TextEditingController _selectedDateController;
-  late String _selectedPriority;
+class _EditTaskPageView extends StatelessWidget {
+  final String taskId;
 
-  final _firestore = FirebaseFirestore.instance;
-
-  @override
-  void initState() {
-    super.initState();
-    _taskNameController = TextEditingController();
-    _taskDescriptionController = TextEditingController();
-    _taskOwnerController = TextEditingController();
-    _selectedDateController = TextEditingController();
-    _selectedPriority = '';
-
-    _fetchTask(widget.taskId);
-  }
-
-  @override
-  void dispose() {
-    _taskNameController.dispose();
-    _taskDescriptionController.dispose();
-    _taskOwnerController.dispose();
-    _selectedDateController.dispose();
-    super.dispose();
-  }
-
-  Future<void> _fetchTask(String taskId) async {
-    final task = await _firestore.collection('category').doc(taskId).get();
-    _taskNameController.text = task['Name'];
-    _taskDescriptionController.text = task['Description'];
-    _taskOwnerController.text = task['Owner'];
-    _selectedDateController.text = (task['DueDate'] as Timestamp).toDate().toString();
-    _selectedPriority = task['Priority'];
-    setState(() {});
-  }
-
-  Future<void> _editTask(String taskId) async {
-    try {
-      await _firestore.collection('category').doc(taskId).update({
-        'Name': _taskNameController.text,
-        'Description': _taskDescriptionController.text,
-        'Owner': _taskOwnerController.text,
-        'DueDate': Timestamp.fromDate(DateTime.parse(_selectedDateController.text)),
-        'Priority': _selectedPriority,
-      }).then((_) {
-        Navigator.of(context).pop();
-      });
-    } catch (error) {
-      error.toString();
-    }
-  }
+  const _EditTaskPageView({required this.taskId, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -79,65 +35,97 @@ class EditTaskPageState extends State<EditTaskPage> {
           style: Theme.of(context).xTextTheme.body1,
         ),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(12.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _buildTextField(_taskNameController, S.of(context).task_name),
-            const SizedBox(height: 12.0),
-            _buildTextField(_taskDescriptionController, S.of(context).task_description),
-            const SizedBox(height: 12.0),
-            _buildTextField(_taskOwnerController, S.of(context).task_owner),
-            const SizedBox(height: 12.0),
-            ElevatedButton(
-              onPressed: () => _selectDate(context),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.main,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
+      body: BlocBuilder<EditTaskPageCubit, EditTaskPageState>(
+        builder: (context, state) {
+          if (state.isLoading) {
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          }
+
+          return Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _buildTextField(
+                  context,
+                  initialValue: state.taskName,
+                  labelText: S.of(context).task_name,
+                  onChanged: (value) => context.read<EditTaskPageCubit>().updateTaskName(value),
                 ),
-              ),
-              child: Text(
-                S.of(context).select_due_date,
-                style: Theme.of(context).xTextTheme.body4,
-              ),
-            ),
-            const SizedBox(height: 12.0),
-            Text(
-              _selectedDateController.text.isNotEmpty ? _selectedDateController.text.split(' ')[0] : '',
-            ),
-            const SizedBox(height: 12.0),
-            _buildPriorityDropdownButton(context),
-            const SizedBox(height: 12.0),
-            ElevatedButton(
-              onPressed: () {
-                _editTask(widget.taskId);
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.main,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10.0),
+                const SizedBox(height: 12.0),
+                _buildTextField(
+                  context,
+                  initialValue: state.taskDescription,
+                  labelText: S.of(context).task_description,
+                  onChanged: (value) => context.read<EditTaskPageCubit>().updateTaskDescription(value),
                 ),
-              ),
-              child: Text(
-                S.of(context).save,
-                style: Theme.of(context).xTextTheme.body3,
-              ),
+                const SizedBox(height: 12.0),
+                _buildTextField(
+                  context,
+                  initialValue: state.taskOwner,
+                  labelText: S.of(context).task_owner,
+                  onChanged: (value) => context.read<EditTaskPageCubit>().updateTaskOwner(value),
+                ),
+                const SizedBox(height: 12.0),
+                ElevatedButton(
+                  onPressed: () => _selectDate(context),
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.main,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                  ),
+                  child: Text(
+                    S.of(context).select_due_date,
+                    style: Theme.of(context).xTextTheme.body4,
+                  ),
+                ),
+                const SizedBox(height: 12.0),
+                Text(
+                  state.selectedDate.isNotEmpty ? state.selectedDate.split(' ')[0] : '',
+                ),
+                const SizedBox(height: 12.0),
+                _buildPriorityDropdownButton(context, state),
+                const SizedBox(height: 12.0),
+                ElevatedButton(
+                  onPressed: () {
+                    context.read<EditTaskPageCubit>().editTask(taskId);
+                  },
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: AppColors.main,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                  ),
+                  child: Text(
+                    S.of(context).save,
+                    style: Theme.of(context).xTextTheme.body3,
+                  ),
+                ),
+                if (state.errorMessage.isNotEmpty)
+                  Text(
+                    state.errorMessage,
+                    style: const TextStyle(color: AppColors.error),
+                  ),
+              ],
             ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
 
-  Widget _buildTextField(TextEditingController controller, String labelText) {
+  Widget _buildTextField(BuildContext context,
+      {required String initialValue, required String labelText, required Function(String) onChanged}) {
     return TextField(
-      controller: controller,
+      controller: TextEditingController(text: initialValue),
       decoration: InputDecoration(
         labelText: labelText,
         border: const OutlineInputBorder(),
       ),
+      onChanged: onChanged,
     );
   }
 
@@ -148,23 +136,21 @@ class EditTaskPageState extends State<EditTaskPage> {
       firstDate: DateTime(2000),
       lastDate: DateTime(2101),
     );
-    if (picked != null) {
-      setState(() {
-        _selectedDateController.text = picked.toString();
-      });
+
+    if (picked != null && context.mounted) {
+      context.read<EditTaskPageCubit>().updateSelectedDate(picked.toString());
     }
   }
 
-  Widget _buildPriorityDropdownButton(BuildContext context) {
+  Widget _buildPriorityDropdownButton(BuildContext context, EditTaskPageState state) {
     return DropdownButtonFormField<String>(
-      value: _selectedPriority.isNotEmpty ? _selectedPriority : TaskPriorities.priorities.first,
+      value: state.selectedPriority.isNotEmpty ? state.selectedPriority : TaskPriorities.priorities.first,
       decoration: InputDecoration(
         labelText: S.of(context).task_priority,
         filled: true,
         fillColor: Colors.white,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
-          borderSide: const BorderSide(color: Colors.blue),
         ),
       ),
       items: TaskPriorities.priorities.map((priority) {
@@ -174,9 +160,9 @@ class EditTaskPageState extends State<EditTaskPage> {
         );
       }).toList(),
       onChanged: (String? value) {
-        setState(() {
-          _selectedPriority = value ?? S.of(context).planned;
-        });
+        if (value != null) {
+          context.read<EditTaskPageCubit>().updateSelectedPriority(value);
+        }
       },
     );
   }

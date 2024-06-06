@@ -10,4 +10,6 @@ abstract class AppColors {
   static const grey = Colors.grey;
 
   static const blue = Colors.blue;
+
+  static const error = Colors.red;
 }
