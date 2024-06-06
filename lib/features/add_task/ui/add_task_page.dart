@@ -31,6 +31,8 @@ class _AddTaskPageState extends State<AddTaskPage> {
     return Scaffold(
       appBar: AppBar(
         leading: const BackButton(),
+        surfaceTintColor: Colors.transparent,
+        elevation: 0,
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
