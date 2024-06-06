@@ -43,7 +43,7 @@ Widget buildTopWidget(BuildContext context) {
                         const Padding(
                           padding: EdgeInsetsSS.only(bottom: 1.78, top: 1),
                           child: CircleAvatar(
-                            backgroundColor: Colors.grey,
+                            backgroundColor: AppColors.grey,
                             radius: 60,
                             child: Icon(
                               Icons.person,

@@ -148,7 +148,7 @@ class _EditTaskPageView extends StatelessWidget {
       decoration: InputDecoration(
         labelText: S.of(context).task_priority,
         filled: true,
-        fillColor: Colors.white,
+        fillColor: AppColors.white,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.0),
         ),
